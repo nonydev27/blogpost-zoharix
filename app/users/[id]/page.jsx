@@ -12,33 +12,7 @@ export default async function UserPage({ params }) {
   });
 
 
-  export default async function PostPage({ params }) {
-  const { id } = await params;
-
-  const post = await prisma.post.findUnique({
-    where: { id },
-    include: { author: true },
-  });
-
-  if (!post) notFound();
-
-  return (
-    <main className="max-w-2xl mx-auto p-8 space-y-4">
-      <Link
-        href={`/users/${post.authorId}`}
-        className="text-blue-600 underline"
-      >
-        ← Back to {post.author.name}
-      </Link>
-      <h1 className="text-3xl font-bold">{post.title}</h1>
-      <p className="text-gray-500 text-sm">
-        by {post.author.name} · {post.createdAt.toLocaleDateString()}
-      </p>
-      {post.content && <p className="whitespace-pre-wrap">{post.content}</p>}
-    </main>
-  );
-}
-
+  
   if (!user) notFound();
 
   return (
