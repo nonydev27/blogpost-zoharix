@@ -2,6 +2,8 @@ import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { createUser } from "./actions";
 
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   const users = await prisma.user.findMany({
     orderBy: { createdAt: "desc" },
